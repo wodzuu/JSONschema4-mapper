@@ -25,6 +25,7 @@ public class ArrayTest {
         //when
         final JSONObject schema = mapper.toJsonSchema4(int[].class);
 
+
         //then
         assertThat(schema.getString("type"), equalTo(TYPE_ARRAY));
     }
