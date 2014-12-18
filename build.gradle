@@ -1,11 +1,14 @@
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'org.ajoberstar.github-pages'
 
 sourceCompatibility = 1.8
 
 group = 'pl.zientarski'
-version = '1.0'
+version = '0.1-SNAPSHOT'
 description = 'Java to JSON Schema v.4 mapper'
 
 repositories {
@@ -27,6 +30,7 @@ buildscript {
 
 	dependencies {
 		classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
+		classpath 'org.ajoberstar:gradle-git:0.12.0'
 	}
 }
 
@@ -34,5 +38,38 @@ jacocoTestReport {
 	reports {
 		xml.enabled = true
 		html.enabled = true
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+
+			// providedCompile -> provided scope
+			pom.withXml {
+				asNode().dependencies.'*'.findAll() {
+					it.scope.text() == 'runtime'  && project.configurations.compile.allDependencies.find { dep ->
+						dep.name == it.artifactId.text()
+					}
+				}.each() {
+					it.scope*.value = 'compile'
+				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			url "$buildDir/repo"
+		}
+	}
+}
+
+githubPages {
+	repoUri = 'https://github.com/wodzuu/JSONschema4-mapper.git'
+	targetBranch = 'mvn-repo'
+	commitMessage = 'development release'
+	pages {
+		from "$buildDir/repo"
 	}
 }
