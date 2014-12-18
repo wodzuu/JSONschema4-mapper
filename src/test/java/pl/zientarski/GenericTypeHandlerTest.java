@@ -79,7 +79,12 @@ public class GenericTypeHandlerTest {
             public JSONObject process(final TypeDescription typeDescription, final MapperContext mapperContext) {
                 final JSONObject result = new JSONObject();
                 final Set<PropertyDescription> properties = typeDescription.getProperties();
-                properties.forEach(dep -> mapperContext.addDependency(dep.getType()));
+
+                properties.stream()
+                        .filter(PropertyDescription::hasField)
+                        .filter(PropertyDescription::hasGetter)
+                        .forEach(dep -> mapperContext.addDependency(dep.getType()));
+
                 return result;
             }
         });
