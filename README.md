@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper)
+[![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper) [![Coverage Status](https://coveralls.io/repos/wodzuu/JSONschema4-mapper/badge.png)](https://coveralls.io/r/wodzuu/JSONschema4-mapper)
 
 # Java to JSON Schema v.4 mapper
 
@@ -247,7 +247,7 @@ schema is equal to
 ```
 # Maturity
 
-The project is well tested with battery of unit tests ([![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper), TODO coverage), and is used in production environments.
+The project is well tested with battery of unit tests ([![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper),[![Coverage Status](https://coveralls.io/repos/wodzuu/JSONschema4-mapper/badge.png)](https://coveralls.io/r/wodzuu/JSONschema4-mapper)), and is used in production environments.
 
 # Using
 
