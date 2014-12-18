@@ -1,7 +1,3 @@
-TODO generate javadoc and reference from document
-
-TODO bold text in examples
-
 # Java to JSON Schema v.4 mapper
 
 The goal of this project is to provide comprehensive, feature-complete and well-tested mapper from Java classes to JSON schema format.
