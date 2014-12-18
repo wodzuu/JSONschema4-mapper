@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper)
+
 # Java to JSON Schema v.4 mapper
 
 The goal of this project is to provide comprehensive, feature-complete and well-tested mapper from Java classes to JSON schema format.
@@ -245,7 +247,7 @@ schema is equal to
 ```
 # Maturity
 
-The project is well tested with battery of unit tests (TODO test report, TODO coverage), and is used in production environments.
+The project is well tested with battery of unit tests ([![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper), TODO coverage), and is used in production environments.
 
 # Using
 
