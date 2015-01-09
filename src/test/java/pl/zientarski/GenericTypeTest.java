@@ -12,6 +12,7 @@ import static pl.zientarski.JsonSchema4.TYPE_STRING;
 
 public class GenericTypeTest {
     private SchemaMapper mapper;
+    private Type type;
 
     class Generic<T> {
         private T property;
@@ -38,15 +39,13 @@ public class GenericTypeTest {
     }
 
     @Before
-    public void before() {
+    public void before() throws NoSuchMethodException {
         mapper = new SchemaMapper();
+        type = GenericTypeTest.class.getDeclaredMethod("helperMethod").getGenericReturnType();
     }
 
     @Test
     public void propertyTypeTest() throws Exception {
-        //given
-        final Type type = GenericTypeTest.class.getDeclaredMethod("helperMethod").getGenericReturnType();
-
         //when
         final JSONObject schema = mapper.toJsonSchema4(type);
 
@@ -59,9 +58,6 @@ public class GenericTypeTest {
 
     @Test
     public void nestedTypeTest() throws Exception {
-        //given
-        final Type type = GenericTypeTest.class.getDeclaredMethod("helperMethod").getGenericReturnType();
-
         //when
         final JSONObject schema = mapper.toJsonSchema4(type);
 
@@ -74,9 +70,6 @@ public class GenericTypeTest {
 
     @Test
     public void doubleNestedTypeTest() throws Exception {
-        //given
-        final Type type = GenericTypeTest.class.getDeclaredMethod("helperMethod").getGenericReturnType();
-
         //when
         final JSONObject schema = mapper.toJsonSchema4(type);
 
