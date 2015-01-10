@@ -272,11 +272,3 @@ and following project dependency
 
 # License
 This project is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0)
-
-# Known issues
-
----
-
-# Version history
-## 0.0.1
-* Initial version
