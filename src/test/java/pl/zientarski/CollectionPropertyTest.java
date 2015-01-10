@@ -37,12 +37,12 @@ public class CollectionPropertyTest {
 
         //then
         final JSONObject properties = schema.getJSONObject("properties");
-        final JSONObject colection = properties.getJSONObject("theCollection");
+        final JSONObject collection = properties.getJSONObject("theCollection");
 
-        final String type = colection.getString("type");
+        final String type = collection.getString("type");
         assertThat(type, equalTo(TYPE_ARRAY));
 
-        final String itemsType = colection.getJSONObject("items").getString("type");
+        final String itemsType = collection.getJSONObject("items").getString("type");
         assertThat(itemsType, equalTo(TYPE_ANY));
     }
 }

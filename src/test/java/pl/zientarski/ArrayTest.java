@@ -94,7 +94,7 @@ public class ArrayTest {
     }
 
     @Test
-    public void objectsMultidimentionalArrayItemsTest() throws Exception {
+    public void objectsMultidimensionalArrayItemsTest() throws Exception {
         //given
         class Smoke {
         }
