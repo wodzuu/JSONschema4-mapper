@@ -29,7 +29,7 @@ public class RelaxedModeTest {
     @Test(expected = MappingException.class)
     public void defaultModeTest() throws Exception {
         //when
-        mapper.toJsonSchema4(Patient.class).toString(4);
+        mapper.toJsonSchema4(Patient.class);
     }
 
     @Test(expected = MappingException.class)
