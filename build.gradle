@@ -41,6 +41,10 @@ jacocoTestReport {
 	}
 }
 
+task sourceJar(type: Jar) {
+	from sourceSets.main.allJava
+}
+
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
@@ -55,6 +59,10 @@ publishing {
 				}.each() {
 					it.scope*.value = 'compile'
 				}
+			}
+
+			artifact sourceJar {
+				classifier "sources"
 			}
 		}
 	}
