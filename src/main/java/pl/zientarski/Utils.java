@@ -2,6 +2,7 @@ package pl.zientarski;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.lang.reflect.WildcardType;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,6 +57,10 @@ public final class Utils {
 
     public static boolean isWildcardType(final Type type) {
         return type instanceof WildcardType;
+    }
+
+    public static boolean isTypeVariable(final Type type) {
+        return type instanceof TypeVariable;
     }
 
     public static boolean isDateTime(final Class<?> clazz) {

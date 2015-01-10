@@ -9,9 +9,7 @@ import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 
 import static pl.zientarski.JsonSchema4.*;
-import static pl.zientarski.Utils.getTypeArgument;
-import static pl.zientarski.Utils.isParameterizedType;
-import static pl.zientarski.Utils.isWildcardType;
+import static pl.zientarski.Utils.*;
 
 public class CollectionSerializer extends PropertySerializer {
 
@@ -32,6 +30,9 @@ public class CollectionSerializer extends PropertySerializer {
         final Type itemType = getItemType(typeArgument);
         if (isParameterizedType(itemType)) {
             items = arrayTypeSchema(getTypeArgument((ParameterizedType) itemType));
+        } else if(isTypeVariable(itemType)) {
+            final Type genericTypeByName = mapperContext.getGenericTypeByName(itemType.getTypeName());
+            items.put("$ref", mapperContext.getTypeReference(genericTypeByName));
         } else {
 
             final Class<?> itemClass = (Class<?>) itemType;
