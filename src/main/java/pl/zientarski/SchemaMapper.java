@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.*;
 
-import static pl.zientarski.Utils.isGenericType;
+import static pl.zientarski.Utils.isParameterizedType;
 
 public class SchemaMapper {
 
@@ -59,7 +59,7 @@ public class SchemaMapper {
     }
 
     public JSONObject toJsonSchema4(final Type type) {
-        if (isGenericType(type)) {
+        if (isParameterizedType(type)) {
             final ParameterizedType genericType = (ParameterizedType) type;
             final Type rawType = genericType.getRawType();
 

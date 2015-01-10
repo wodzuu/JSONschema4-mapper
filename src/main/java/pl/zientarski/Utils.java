@@ -2,6 +2,7 @@ package pl.zientarski;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.WildcardType;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -49,8 +50,12 @@ public final class Utils {
         return clazz.isEnum();
     }
 
-    public static boolean isGenericType(final Type type) {
+    public static boolean isParameterizedType(final Type type) {
         return type instanceof ParameterizedType;
+    }
+
+    public static boolean isWildcardType(final Type type) {
+        return type instanceof WildcardType;
     }
 
     public static boolean isDateTime(final Class<?> clazz) {
@@ -63,5 +68,9 @@ public final class Utils {
 
     public static Type getTypeArgument(final ParameterizedType genericType) {
         return genericType.getActualTypeArguments()[0];
+    }
+
+    public static Type getTypeArgument(final WildcardType genericType) {
+        return genericType.getUpperBounds()[0];
     }
 }

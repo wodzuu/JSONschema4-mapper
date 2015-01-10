@@ -26,7 +26,7 @@ public class ArrayTypeHandler implements TypeHandler {
 
     public static JSONObject arrayTypeSchema(final Type typeArgument, final MapperContext mapperContext) {
         JSONObject items = new JSONObject();
-        if (isGenericType(typeArgument)) {
+        if (isParameterizedType(typeArgument)) {
             items = arrayTypeSchema(getTypeArgument((ParameterizedType) typeArgument), mapperContext);
         } else {
             final Class<?> itemClass = (Class<?>) typeArgument;

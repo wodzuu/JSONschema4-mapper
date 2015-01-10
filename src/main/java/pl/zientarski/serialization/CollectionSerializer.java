@@ -6,10 +6,12 @@ import pl.zientarski.PropertyDescription;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.WildcardType;
 
 import static pl.zientarski.JsonSchema4.*;
 import static pl.zientarski.Utils.getTypeArgument;
-import static pl.zientarski.Utils.isGenericType;
+import static pl.zientarski.Utils.isParameterizedType;
+import static pl.zientarski.Utils.isWildcardType;
 
 public class CollectionSerializer extends PropertySerializer {
 
@@ -27,10 +29,12 @@ public class CollectionSerializer extends PropertySerializer {
 
     protected JSONObject arrayTypeSchema(final Type typeArgument) {
         JSONObject items = new JSONObject();
-        if (isGenericType(typeArgument)) {
-            items = arrayTypeSchema(getTypeArgument((ParameterizedType) typeArgument));
+        final Type itemType = getItemType(typeArgument);
+        if (isParameterizedType(itemType)) {
+            items = arrayTypeSchema(getTypeArgument((ParameterizedType) itemType));
         } else {
-            final Class<?> itemClass = (Class<?>) typeArgument;
+
+            final Class<?> itemClass = (Class<?>) itemType;
 
             if (itemClass.equals(boolean.class) || itemClass.equals(Boolean.class)) {
                 items.put("type", TYPE_BOOLEAN);
@@ -42,7 +46,7 @@ public class CollectionSerializer extends PropertySerializer {
                 items = arrayTypeSchema(getTypeArgument(itemClass));
             } else {
                 items.put("$ref", mapperContext.getTypeReference(itemClass));
-                mapperContext.addDependency(typeArgument);
+                mapperContext.addDependency(itemType);
             }
         }
 
@@ -50,5 +54,12 @@ public class CollectionSerializer extends PropertySerializer {
         result.put("type", TYPE_ARRAY);
         result.put("items", items);
         return result;
+    }
+
+    private Type getItemType(final Type typeArgument) {
+        if (isWildcardType(typeArgument)) {
+            return getTypeArgument((WildcardType) typeArgument);
+        }
+        return typeArgument;
     }
 }
