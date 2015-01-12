@@ -21,6 +21,9 @@ public class MapperContext {
     private DescriptionProvider descriptionProvider;
 
     public Type getGenericTypeByName(final String name) {
+        if(genericTypeNamesToTypesMapping == null || !genericTypeNamesToTypesMapping.containsKey(name)){
+            throw new MappingException("Cannot perform mapping of generic type without type parameter specified.");
+        }
         return genericTypeNamesToTypesMapping.get(name);
     }
 

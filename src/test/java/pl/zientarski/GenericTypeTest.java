@@ -79,4 +79,9 @@ public class GenericTypeTest {
 
         assertThat(propertyRef, equalTo("Generic<Generic<String>>"));
     }
+
+    @Test(expected = MappingException.class)
+    public void withoutSpecifiedGenericParameterTest() throws Exception {
+        mapper.toJsonSchema4(Generic.class);
+    }
 }
