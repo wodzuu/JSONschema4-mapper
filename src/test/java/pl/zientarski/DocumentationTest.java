@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import pl.zientarski.typehandler.TypeHandler;
+import pl.zientarski.util.ParameterizedTypeReference;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -190,5 +191,30 @@ public class DocumentationTest {
         assertTrue(schema.has("construction"));
 
         assertThat(schema.toString(), equalTo("{\"construction\":\"completed\"}"));
+    }
+
+    @Test(expected = MappingException.class)
+    public void withoutSpecifiedGenericParameterTest() throws Exception {
+        class Generic<T> {
+            private T field;
+
+            public T getField() {
+                return field;
+            }
+        }
+        schemaMapper.toJsonSchema4(Generic.class);
+    }
+
+    @Test
+    public void withSpecifiedGenericParameterTest() throws Exception {
+        class Generic<T> {
+            private T field;
+
+            public T getField() {
+                return field;
+            }
+        }
+        Type type = new ParameterizedTypeReference<Generic<String>>(){}.getType();
+        schemaMapper.toJsonSchema4(type);
     }
 }

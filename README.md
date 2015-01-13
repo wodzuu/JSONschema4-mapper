@@ -1,5 +1,16 @@
 [![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper) [![Coverage Status](https://coveralls.io/repos/wodzuu/JSONschema4-mapper/badge.png)](https://coveralls.io/r/wodzuu/JSONschema4-mapper)
 
+# Table of contents
+- [Java to JSON Schema v.4 mapper](#java-to-json-schema-v4-mapper)
+- [Usage](#usage)
+- [Producing complete schema in one call](#producing-complete-schema-in-one-call)
+- [Configuration](#configuration)
+- [Custom type handlers](#custom-type-handlers)
+- [Troubleshooting](#troubleshooting)
+- [Maturity](#maturity)
+- [Using](#using)
+- [License](#license)
+
 # Java to JSON Schema v.4 mapper
 
 The goal of this project is to provide comprehensive, feature-complete and well-tested mapper from Java classes to JSON schema format.
@@ -32,7 +43,6 @@ JSONObject schema = new SchemaMapper().toJsonSchema4(Demo.class);
     "required": ["mindBlowing"]
 }
 ```
-# Features
 
 # Usage
 
@@ -244,6 +254,29 @@ schema is equal to
 
 ```javascript
 {"construction": "completed"}
+```
+# Troubleshooting
+
+__Q__: During runtime I get following exception: `Cannot perform mapping of generic type without type parameter specified.`
+
+__A__: This error is a result of attempting to generate JSON schema for generic type without specifying it's type parameter. The example: 
+
+```java
+class Generic<T> {
+            private T field;
+
+            public T getField() {
+                return field;
+            }
+        }
+mapper.toJsonSchema4(Generic.class);
+```
+
+will result in such exception because SchemaMapper is not able to determine the actual type of `Generic<T>.field`. To fix this problem use `ParameterizedTypeReference` class to construct generic type with type parameter information:
+
+```java
+Type type = new ParameterizedTypeReference<Generic<String>>(){}.getType();
+JSONObject schema = mapper.toJsonSchema4(type);
 ```
 # Maturity
 
