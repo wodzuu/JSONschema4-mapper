@@ -263,12 +263,13 @@ __A__: This error is a result of attempting to generate JSON schema for generic 
 
 ```java
 class Generic<T> {
-            private T field;
+        private T field;
 
-            public T getField() {
-                return field;
-            }
+        public T getField() {
+        	return field;
         }
+}
+
 mapper.toJsonSchema4(Generic.class);
 ```
 
