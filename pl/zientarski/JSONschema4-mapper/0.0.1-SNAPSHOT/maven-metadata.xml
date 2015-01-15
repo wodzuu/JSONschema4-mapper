@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>pl.zientarski</groupId>
-  <artifactId>schema-mapper</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <artifactId>JSONschema4-mapper</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20150113.102302</timestamp>
+      <timestamp>20150115.191553</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20150113102302</lastUpdated>
+    <lastUpdated>20150115191553</lastUpdated>
   </versioning>
 </metadata>
