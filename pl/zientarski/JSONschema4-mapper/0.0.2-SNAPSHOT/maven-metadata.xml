@@ -2,12 +2,12 @@
 <metadata>
   <groupId>pl.zientarski</groupId>
   <artifactId>JSONschema4-mapper</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20150115.191553</timestamp>
+      <timestamp>20150115.193414</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20150115191553</lastUpdated>
+    <lastUpdated>20150115193414</lastUpdated>
   </versioning>
 </metadata>
