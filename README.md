@@ -281,7 +281,7 @@ JSONObject schema = mapper.toJsonSchema4(type);
 ```
 # Maturity
 
-The project is well tested with battery of unit tests ([![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper),[![Coverage Status](https://coveralls.io/repos/wodzuu/JSONschema4-mapper/badge.png)](https://coveralls.io/r/wodzuu/JSONschema4-mapper)), and is used in production environments.
+The project is well tested with battery of unit tests ([![Build Status](https://travis-ci.org/wodzuu/JSONschema4-mapper.svg?branch=master)](https://travis-ci.org/wodzuu/JSONschema4-mapper),[![Coverage Status](https://coveralls.io/repos/wodzuu/JSONschema4-mapper/badge.png)](https://coveralls.io/r/wodzuu/JSONschema4-mapper)), and is already used in production environments.
 
 # Using
 
@@ -293,14 +293,23 @@ The project can be used with Maven/Gradle by referencing following repository:
     <url>https://raw.github.com/wodzuu/JSONschema4-mapper/mvn-repo/</url>
 </repository>
 ```
-
-and following project dependency
+and following project dependency:
 
 ```xml
 <dependency>
     <groupId>pl.zientarski</groupId>
-    <artifactId>schema-mapper</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <artifactId>JSONschema4-mapper</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+SNAPSHOT dependency:
+
+```xml
+<dependency>
+    <groupId>pl.zientarski</groupId>
+    <artifactId>JSONschema4-mapper</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
 </dependency>
 ```
 
