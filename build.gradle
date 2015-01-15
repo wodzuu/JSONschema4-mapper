@@ -8,7 +8,7 @@ apply plugin: 'org.ajoberstar.github-pages'
 sourceCompatibility = 1.8
 
 group = 'pl.zientarski'
-version = '0.1-SNAPSHOT'
+version = '0.0.1'
 description = 'Java to JSON Schema v.4 mapper'
 
 repositories {
