@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Utils {
-    private static final Map<Class<?>, Class<?>> primitivesToWrappers = new HashMap<>();
+    private static final Map<Class<?>, Class<?>> primitivesToWrappers = new HashMap<Class<?>, Class<?>>();
 
     static {
         primitivesToWrappers.put(Boolean.class, boolean.class);
