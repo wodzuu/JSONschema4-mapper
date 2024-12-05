@@ -41,6 +41,9 @@ public class PropertyDescription {
         if (getter != null) {
             getterAnnotations.addAll(Arrays.asList(getter.getAnnotations()));
         }
+        if(fieldAnnotations.size() == 0){
+            System.out.println("empty");
+        }
 
         hasField = field != null;
         hasSetter = setter != null;
